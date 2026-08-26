@@ -1,0 +1,112 @@
+<!-- 복사해서 게시물 본문에 붙여넣으면 됨 -->
+
+<script>
+  (function () {
+    var artmugMenuOpened = false;
+
+    var ALLOWED_ORIGINS = ["https://nuyhv.github.io"];
+
+    function findAnchor(name) {
+      var anchors = document.getElementsByTagName("a");
+
+      for (var i = 0; i < anchors.length; i++) {
+        if (anchors[i].getAttribute("name") === name) {
+          return anchors[i];
+        }
+      }
+
+      return null;
+    }
+
+    function scrollToAnchor(name) {
+      var target = findAnchor(name);
+
+      if (!target) {
+        return;
+      }
+
+      var rect = target.getBoundingClientRect();
+
+      var scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+      window.scrollTo({
+        top: Math.max(0, scrollTop + rect.top - 20),
+        behavior: "smooth",
+      });
+    }
+
+    function openMoreThenScroll(section) {
+      if (section === "top") {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+
+        return;
+      }
+
+      if (!artmugMenuOpened) {
+        var moreButton = document.querySelector(".btn_open_btn");
+
+        if (moreButton) {
+          moreButton.click();
+          artmugMenuOpened = true;
+
+          setTimeout(function () {
+            scrollToAnchor(section);
+          }, 500);
+
+          return;
+        }
+
+        artmugMenuOpened = true;
+      }
+
+      scrollToAnchor(section);
+    }
+
+    function getArtmugUid() {
+      var params = new URLSearchParams(window.location.search);
+      return params.get("uid");
+    }
+
+    window.addEventListener("message", function (event) {
+      if (ALLOWED_ORIGINS.indexOf(event.origin) === -1) {
+        return;
+      }
+
+      if (!event.data || event.data.type !== "artmug-custom-menu") {
+        return;
+      }
+
+      if (event.data.action === "section") {
+        openMoreThenScroll(event.data.section);
+        return;
+      }
+
+      if (event.data.action === "qna") {
+        if (typeof window.pLightBox !== "undefined" && window.pLightBox) {
+          var uid = getArtmugUid();
+
+          if (!uid) {
+            return;
+          }
+
+          window.pLightBox.show(
+            "php/qna_write.php?cate=100000000000&number=" + encodeURIComponent(uid),
+            "iframe_w",
+            "1080",
+            "500",
+            "문의하기",
+            "0",
+          );
+
+          if (typeof window.qnaAlert === "function") {
+            window.qnaAlert();
+          }
+        }
+      }
+    });
+  })();
+</script>

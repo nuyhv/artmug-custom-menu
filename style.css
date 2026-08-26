@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.artmug-menu {
+  width: 200px;
+  height: 350px;
+  padding-top: 25px;
+  background-image: url("https://lh3.googleusercontent.com/d/1IXjEdo25iNq2f4p65iEDmCP8M3yb8osB");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+.menu-link,
+.qna-button {
+  display: block;
+  width: 200px;
+  padding: 0;
+  margin: 0 0 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.menu-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.qna-button {
+  height: 30px;
+  margin-bottom: 0;
+  background-image: url("https://lh3.googleusercontent.com/d/1J0pTsGXj7u6JzoNY70BDgmaw3Q_zUQUl");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.menu-link:hover img,
+.qna-button:hover {
+  filter: brightness(1.04);
+}
+
+.menu-link:active img,
+.qna-button:active {
+  transform: scale(0.985);
+}
+
+.menu-link:focus-visible,
+.qna-button:focus-visible {
+  outline: 2px solid rgba(255, 140, 160, 0.9);
+  outline-offset: 2px;
+}
