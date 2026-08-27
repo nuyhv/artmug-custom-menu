@@ -7,6 +7,12 @@
     var ALLOWED_ORIGINS = ["https://nuyhv.github.io"];
 
     function findAnchor(name) {
+      var targetById = document.getElementById(name);
+
+      if (targetById) {
+        return targetById;
+      }
+
       var anchors = document.getElementsByTagName("a");
 
       for (var i = 0; i < anchors.length; i++) {

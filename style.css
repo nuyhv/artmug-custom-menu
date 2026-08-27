@@ -1,75 +1,330 @@
+@font-face {
+  font-family: "DNFBitBitV2";
+  font-style: normal;
+  font-weight: normal;
+  src: url("https://cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LeeSeoyun";
+  font-style: normal;
+  font-weight: normal;
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+    format("woff");
+  font-display: swap;
+}
+
+/* =========================================================
+   색상
+========================================================= */
+
+:root {
+  --mint-border: #a8c2b4;
+  --mint-border-strong: #97b0a4;
+  --mint-title: #8faf9f;
+  --mint-text: #6f887b;
+  --mint-muted: #94aa9f;
+
+  --white: #ffffff;
+
+  --pink: #ff91aa;
+  --orange: #ff9b68;
+  --yellow: #e8ae39;
+  --green: #9bb8a7;
+  --blue: #8fc9e7;
+}
+
+/* =========================================================
+   기본
+========================================================= */
+
 * {
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
+  width: 100%;
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
   background: transparent;
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  color: var(--mint-text);
+
+  font-family: "LeeSeoyun", "Pretendard", "Noto Sans KR", Arial, sans-serif;
+
+  overflow-x: hidden;
 }
+
+/* =========================================================
+   전체 프레임
+========================================================= */
 
 .artmug-menu {
+  position: relative;
+
   width: 200px;
-  height: 350px;
-  padding-top: 25px;
-  background-image: url("https://lh3.googleusercontent.com/d/1IXjEdo25iNq2f4p65iEDmCP8M3yb8osB");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top left;
+
+  margin: 0;
+  padding: 0;
+
+  border: 2px solid var(--mint-border);
+  border-radius: 10px;
+
+  background-color: var(--white);
+
+  background-image:
+    linear-gradient(rgba(159, 190, 175, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 190, 175, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(159, 190, 175, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 190, 175, 0.055) 1px, transparent 1px);
+
+  background-size:
+    52px 52px,
+    52px 52px,
+    10px 10px,
+    10px 10px;
+
+  box-shadow: 0 8px 30px rgba(106, 137, 122, 0.08);
+
+  overflow: hidden;
 }
 
-.menu-link,
-.qna-button {
-  display: block;
-  width: 200px;
-  padding: 0;
-  margin: 0 0 10px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  cursor: pointer;
+/* =========================================================
+   내부
+========================================================= */
+
+.menu-inner {
+  width: 100%;
+  padding: 16px 11px 14px;
+}
+
+/* =========================================================
+   헤더
+========================================================= */
+
+.menu-header {
+  padding: 2px 2px 13px;
+  text-align: center;
+}
+
+.menu-eyebrow {
+  margin: 0 0 2px;
+
+  color: #9db7a9;
+
+  font-family: "DNFBitBitV2", sans-serif;
+
+  font-size: 8px;
+  font-weight: 400;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.1em;
+}
+
+.menu-header h1 {
+  margin: 0;
+
+  color: var(--mint-title);
+
+  font-family: "DNFBitBitV2", sans-serif;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  letter-spacing: -0.08em;
+
+  line-height: 1.2;
+}
+
+/* =========================================================
+   메뉴 리스트
+========================================================= */
+
+.menu-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+/* =========================================================
+   버튼
+========================================================= */
+
+.menu-button {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 40px;
+
+  margin: 0;
+  padding: 0 25px 0 12px;
+
+  border: 1px solid rgba(151, 176, 164, 0.38);
+  border-radius: 7px;
+
   appearance: none;
   -webkit-appearance: none;
+
+  color: var(--mint-text);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.14s ease,
+    border-color 0.14s ease,
+    box-shadow 0.14s ease,
+    background-color 0.14s ease;
 }
 
-.menu-link img {
+.menu-button:hover {
+  transform: translateY(-1px);
+
+  border-color: rgba(151, 176, 164, 0.6);
+
+  background: #ffffff;
+
+  box-shadow: 0 4px 10px rgba(106, 137, 122, 0.08);
+}
+
+.menu-button:active {
+  transform: translateY(0);
+}
+
+.menu-button:focus-visible {
+  outline: 2px solid rgba(130, 160, 145, 0.45);
+  outline-offset: -2px;
+}
+
+/* =========================================================
+   앞쪽 점
+========================================================= */
+
+.menu-dot {
+  flex: 0 0 6px;
+
+  width: 6px;
+  height: 6px;
+
+  margin-right: 10px;
+
+  border-radius: 50%;
+
+  background: #9db7a9;
+
+  opacity: 0.95;
+}
+
+/* 메뉴별 점 색상 */
+
+.menu-button.top .menu-dot,
+.menu-button.sample .menu-dot {
+  background: var(--pink);
+}
+
+.menu-button.process .menu-dot,
+.menu-button.apply .menu-dot {
+  background: var(--orange);
+}
+
+.menu-button.type .menu-dot {
+  background: var(--yellow);
+}
+
+.menu-button.caution .menu-dot {
+  background: var(--green);
+}
+
+.menu-button.collab .menu-dot {
+  background: var(--blue);
+}
+
+/* =========================================================
+   메뉴 글씨
+========================================================= */
+
+.menu-title {
   display: block;
-  width: 100%;
-  height: auto;
-  pointer-events: none;
+
+  color: #708a7d;
+
+  font-family: "DNFBitBitV2", sans-serif;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.06em;
+
+  white-space: nowrap;
 }
 
-.qna-button {
-  height: 30px;
-  margin-bottom: 0;
-  background-image: url("https://lh3.googleusercontent.com/d/1J0pTsGXj7u6JzoNY70BDgmaw3Q_zUQUl");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
+/* =========================================================
+   오른쪽 화살표
+========================================================= */
+
+.menu-arrow {
+  position: absolute;
+
+  right: 9px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: #a5b6ad;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 17px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  opacity: 0.65;
+
+  transition:
+    transform 0.14s ease,
+    opacity 0.14s ease;
 }
 
-.menu-link:hover img,
-.qna-button:hover {
-  filter: brightness(1.04);
+.menu-button:hover .menu-arrow {
+  transform: translate(2px, -50%);
+  opacity: 0.95;
 }
 
-.menu-link:active img,
-.qna-button:active {
-  transform: scale(0.985);
-}
+/* =========================================================
+   작은 iframe
+========================================================= */
 
-.menu-link:focus-visible,
-.qna-button:focus-visible {
-  outline: 2px solid rgba(255, 140, 160, 0.9);
-  outline-offset: 2px;
+@media (max-width: 210px) {
+  .artmug-menu {
+    width: 100%;
+  }
+
+  .menu-inner {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .menu-title {
+    font-size: 14px;
+  }
 }
