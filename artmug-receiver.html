@@ -77,12 +77,40 @@
       return params.get("uid");
     }
 
+    function resizeIframe(event) {
+      var height = Number(event.data.height);
+
+      if (!Number.isFinite(height) || height <= 0) {
+        return;
+      }
+
+      var iframes = document.getElementsByTagName("iframe");
+
+      for (var i = 0; i < iframes.length; i++) {
+        if (iframes[i].contentWindow !== event.source) {
+          continue;
+        }
+
+        iframes[i].style.height = Math.ceil(height) + "px";
+        return;
+      }
+    }
+
     window.addEventListener("message", function (event) {
       if (ALLOWED_ORIGINS.indexOf(event.origin) === -1) {
         return;
       }
 
-      if (!event.data || event.data.type !== "artmug-custom-menu") {
+      if (!event.data) {
+        return;
+      }
+
+      if (event.data.type === "resize") {
+        resizeIframe(event);
+        return;
+      }
+
+      if (event.data.type !== "artmug-custom-menu") {
         return;
       }
 
