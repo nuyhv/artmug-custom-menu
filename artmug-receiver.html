@@ -77,7 +77,26 @@
       return params.get("uid");
     }
 
+    function revealCustomMenu() {
+      var customCode = document.getElementById("custom_code");
+
+      if (!customCode) {
+        return;
+      }
+
+      var menuIframe = customCode.querySelector('iframe[src*="artmug-custom-menu"]');
+
+      if (!menuIframe) {
+        return;
+      }
+
+      // 아트머그가 custom_code 래퍼를 display:none으로 감추는 경우 메뉴를 표시합니다.
+      customCode.style.setProperty("display", "block", "important");
+    }
+
     function resizeIframe(event) {
+      revealCustomMenu();
+
       var height = Number(event.data.height);
 
       if (!Number.isFinite(height) || height <= 0) {
@@ -142,5 +161,11 @@
         }
       }
     });
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", revealCustomMenu);
+    } else {
+      revealCustomMenu();
+    }
   })();
 </script>
