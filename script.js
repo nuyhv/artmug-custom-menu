@@ -3,6 +3,22 @@
   const menu = document.querySelector(".artmug-menu");
   let lastHeight = 0;
 
+  function isIllustrationType() {
+    const type = new URLSearchParams(window.location.search).get("type");
+
+    return type === "illustration";
+  }
+
+  function configureMenu() {
+    if (!isIllustrationType()) {
+      return;
+    }
+
+    document.querySelectorAll('[data-section="collab"]').forEach((button) => {
+      button.remove();
+    });
+  }
+
   function sendToArtmug(section) {
     if (!window.parent || window.parent === window) {
       return;
@@ -53,6 +69,8 @@
       TARGET_ORIGIN,
     );
   }
+
+  configureMenu();
 
   document.querySelectorAll("[data-section]").forEach((button) => {
     button.addEventListener("click", () => {
