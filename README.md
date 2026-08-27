@@ -19,7 +19,7 @@
     right:40px;
     top:50%;
     transform:translateY(-50%);
-    z-index:1000;
+    z-index:2147483647;
     border:0;
     background:transparent;
   "
