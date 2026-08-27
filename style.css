@@ -261,23 +261,26 @@ body {
 }
 
 .menu-button.qna {
-  border-color: var(--mint-border);
-  background-color: var(--mint-border);
-  color: var(--white);
+  border-color: #d6e6dc;
+  background-color: #d6e6dc;
+  color: #708a7d;
 }
 
 .menu-button.qna .menu-dot {
   background: var(--white);
 }
 
-.menu-button.qna .menu-title,
+.menu-button.qna .menu-title {
+  color: #708a7d;
+}
+
 .menu-button.qna .menu-arrow {
-  color: var(--white);
+  color: #a5b6ad;
 }
 
 .menu-button.qna:hover {
-  border-color: var(--mint-border-strong);
-  background: var(--mint-border-strong);
+  border-color: #c9dcd0;
+  background: #c9dcd0;
 }
 
 /* =========================================================
@@ -296,7 +299,7 @@ body {
 
   line-height: 1;
 
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 
   white-space: nowrap;
 }
